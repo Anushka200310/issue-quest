@@ -1,0 +1,126 @@
+import React from "react";
+import { ModeToggle } from "./mode-toggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { CiMenuFries } from "react-icons/ci";
+import { Input } from "@/components/ui/input";
+import { CiSearch } from "react-icons/ci";
+import { Link, useLocation } from "react-router-dom";
+import useAuth from "@/store/auth";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { CircleDot } from "lucide-react";
+
+const Header = () => {
+  const { isLoggedIn, user } = useAuth();
+  const location = useLocation();
+  const { pathname } = location;
+  return (
+    <header className="flex items-center justify-between top-0 sticky z-50 shadow-md dark:shadow-slate-700 backdrop-blur-lg">
+      <div className="p-5 text-2xl text-blue-950 font-extralight dark:text-indigo-200">
+        <Link to="/" className="flex items-center md:gap-2">Issue Quest <CircleDot className="hidden md:block" /></Link>
+      </div>
+      <div className="flex items-center gap-3 sm:gap-16">
+        {/* search bar */}
+        <form className="flex items-center gap-1 text-3xl cursor-pointer">
+          {isLoggedIn && pathname === "/article" ? (
+            <>
+              {" "}
+              <Input
+                className="dark:border-slate-400 bg-transparent focus-visible:ring-0"
+                placeholder="search..."
+              />
+              <CiSearch />
+            </>
+          ) : null}
+        </form>
+
+        {/* desktop menu */}
+        <ul className="hidden md:flex gap-10">
+          <li className="hover:text-gray-400">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="hover:text-gray-400">
+            <Link to="/article">Issues</Link>
+          </li>
+          {!isLoggedIn ? (
+            <li className="hover:text-gray-400">
+              <Link to="/signup">Sign up</Link>
+            </li>
+          ) : null}
+        </ul>
+      </div>
+
+      <div className="flex gap-3">
+        {/* mobile menu */}
+        <DropdownMenu>
+          <DropdownMenuTrigger className="md:hidden focus:outline-none">
+            <CiMenuFries className="text-xl" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {isLoggedIn ? (
+              <>
+                <div className="flex gap-1 items-center cursor-pointer">
+                  {/* profile picture for mobile menu */}
+                  <Avatar>
+                    <Link to="/profile">
+                      <AvatarImage src={user.avatar} alt="profile picture" />
+                    </Link>
+                    <AvatarFallback>Img</AvatarFallback>
+                  </Avatar>
+                  <DropdownMenuLabel>Profile</DropdownMenuLabel>
+                </div>
+                <DropdownMenuSeparator />
+              </>
+            ) : null}
+
+            <DropdownMenuItem>
+              <Link to="/">Home</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link to="/article">Issues</Link>
+            </DropdownMenuItem>
+            {isLoggedIn ? (
+              <DropdownMenuItem>
+                <Link to="/logout">Log out</Link>
+              </DropdownMenuItem>
+            ) : (
+              <DropdownMenuItem>
+                <Link to="/signup">Sign up</Link>
+              </DropdownMenuItem>
+            )}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        {isLoggedIn ? (
+          <div className="flex gap-4 items-center cursor-pointer">
+            {/* profile picture */}
+
+            <Avatar className="hidden md:flex">
+              <Link to="/profile">
+                <AvatarImage src={user.avatar} alt="profile picture" />
+              </Link>
+              <AvatarFallback>img</AvatarFallback>
+            </Avatar>
+
+            {/*theme toggler */}
+            <div className="p-5 focus:outline-none">
+              <ModeToggle className="focus-visible:ring-0" />
+            </div>
+          </div>
+        ) : (
+          <div className="p-5 focus:outline-none">
+            <ModeToggle className="focus-visible:ring-0" />
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;
