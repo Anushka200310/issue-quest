@@ -2,7 +2,7 @@
 
 ## Overview
 
-Issue Quest is a powerful tool designed to help developers manage GitHub issues efficiently. Built with the MERN stack (MongoDB, Express.js, React, Node.js), Issue Quest streamlines issue tracking, management, and resolution, providing a seamless and user-friendly experience.
+Issue Quest is a website built to help developers manage GitHub issues efficiently. Built with the MERN stack (MongoDB, Express.js, React, Node.js), Issue Quest streamlines issue tracking, management, and resolution, providing a seamless and user-friendly experience.
 
 ## Features
 
