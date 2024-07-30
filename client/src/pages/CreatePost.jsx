@@ -15,14 +15,6 @@ const createPost = () => {
       name : '',
       description : '',
       address : '',
-      type : 'rent',
-      bedrooms : 1,
-      bathrooms : 1,
-      regularPrice : 50,
-      discountPrice : 50,
-      offer : false,
-      parking : false,
-      furnished : false
     });
     const [imageUploadError, setImageUploadError] = useState(false);
     const [uploading, setUploading] = useState(false);
@@ -102,19 +94,19 @@ const createPost = () => {
     }
 
     const handleChange = (e)=>{
-      if(e.target.id === 'sale' || e.target.id === 'rent'){
-        setFormData({
-          ...formData,
-          type: e.target.id
-        })
-      }
+      // if(e.target.id === 'sale' || e.target.id === 'rent'){
+      //   setFormData({
+      //     ...formData,
+      //     type: e.target.id
+      //   })
+      // }
 
-      if(e.target.id === 'parking' || e.target.id === 'furnished' || e.target.id === 'offer'){
-        setFormData({
-          ...formData,
-          [e.target.id]: e.target.checked
-        })
-      }
+      // if(e.target.id === 'parking' || e.target.id === 'furnished' || e.target.id === 'offer'){
+      //   setFormData({
+      //     ...formData,
+      //     [e.target.id]: e.target.checked
+      //   })
+      // }
 
       if(e.target.type === 'number' || e.target.type === 'text' || e.target.type === 'textarea'){
         setFormData({
@@ -132,9 +124,9 @@ const createPost = () => {
         if(formData.imageUrls.length < 1){
           toast.error("you must upload atleast one image");
         }
-        if(formData.regularPrice < formData.discountPrice){
-          toast.error("discount price should be lower than the regular price");
-        }
+        // if(formData.regularPrice < formData.discountPrice){
+        //   toast.error("discount price should be lower than the regular price");
+        // }
         setLoading(true)
         const response = await fetch(URL, {
           method : 'POST',
@@ -149,7 +141,7 @@ const createPost = () => {
         })
         
         if(response.ok ){
-          toast.success("listing created successfully");
+          toast.success("Issue created successfully");
         }
         const data = await response.json();
         console.log(data)
@@ -163,43 +155,43 @@ const createPost = () => {
 
     }
   return (
-    <div className='p-3 max-w-4xl mx-auto'>
-      <h1 className='text-center font-semibold text-4xl sm:text-5xl mt-8 text-slate-500 dark:text-slate-300 my-7'>Create Listing</h1>
+    <div className='p-6 max-w-4xl mx-auto h-screen'>
+      <h1 className='text-center font-semibold text-4xl sm:text-5xl mt-8 text-slate-500 dark:text-slate-300 my-7'>Create Issue</h1>
       <form onSubmit={handleFormSubmit} className='flex flex-col sm:flex-row gap-4'>
        <div className='flex flex-col gap-3 flex-1'>
           <input onChange={handleChange} value={formData.name} type='text' id='name' placeholder='name' className='border border-slate-200 bg-transparent rounded-md p-2' maxLength='62' minLength='10' />
           <textarea onChange={handleChange} value={formData.description} type='text' id='description' placeholder='description...' required className='border border-slate-200 bg-transparent rounded-md p-2' />
           <input onChange={handleChange} value={formData.address} type='text' id='address' placeholder='address' className='border border-slate-200 bg-transparent rounded-md p-2' required />
 
-          <div className='flex gap-4 flex-wrap mt-3'>
-            <div className='flex gap-2'>
+          {/* <div className='flex gap-4 flex-wrap mt-3'> */}
+            {/* <div className='flex gap-2'>
               <input type='checkbox' id='sale' className='w-4' onChange={handleChange} checked={formData.type === "sale"} />
               <span>Sell</span>
-            </div>
+            </div> */}
 
-            <div className='flex gap-2'>
+            {/* <div className='flex gap-2'>
               <input type='checkbox' id='rent' className='w-4'  onChange={handleChange} checked={formData.type === "rent"} />
               <span>Rent</span>
-            </div>
+            </div> */}
 
-            <div className='flex gap-2'>
+            {/* <div className='flex gap-2'>
               <input type='checkbox' id='parking' className='w-4' onChange={handleChange} checked={formData.parking} />
               <span>Parking spot</span>
-            </div>
+            </div> */}
 
-            <div className='flex gap-2'>
+            {/* <div className='flex gap-2'>
               <input type='checkbox' id='furnished' className='w-4' onChange={handleChange} checked={formData.furnished} />
               <span>Furnished</span>
-            </div>
+            </div> */}
 
-            <div className='flex gap-2'>
+            {/* <div className='flex gap-2'>
               <input type='checkbox' id='offer' className='w-4' onChange={handleChange} checked={formData.offer} />
               <span>Offer</span>
-            </div>
+            </div> */}
 
-          </div>
+          {/* </div> */}
 
-          <div className='flex flex-wrap gap-6'>
+          {/* <div className='flex flex-wrap gap-6'>
             <div className='flex items-center gap-2'>
               <input type="number" id='bedrooms' min='1' max='10' className='p-3 border border-gray-300 rounded-lg dark:bg-transparent dark:border' onChange={handleChange} checked={formData.bedrooms} />
               <p>Beds</p>
@@ -228,7 +220,7 @@ const createPost = () => {
 
             )}
 
-          </div>
+          </div> */}
 
         </div>
 
@@ -250,7 +242,7 @@ const createPost = () => {
               </div> 
             ))
           }
-          <button disabled={loading || uploading} className='p-3 mt-8 bg-slate-600 text-white rounded-xl uppercase hover:opacity-95 disabled:opacity-80 '>{loading ? 'Creating...' : 'Create listing'}</button>
+          <button disabled={loading || uploading} className='p-3 mt-8 bg-slate-600 text-white rounded-xl uppercase hover:opacity-95 disabled:opacity-80 '>{loading ? 'Creating...' : 'Create Issue'}</button>
         </div>
 
       </form>

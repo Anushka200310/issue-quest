@@ -28,19 +28,18 @@ const Home = () => {
       
          <PopoverContent className="w-80">
           <p className='text-zinc-500'>
-          dive deeper into the realms of tech, AI, and beyond. Enhance your understanding and stay informed with just a <Link to='/article' className='font-bold'>tap</Link>
+          Issue Quest streamlines issue tracking, management, and resolution, providing a seamless and user-friendly experience <Link to='/article' className='font-bold'>tap</Link>
           </p>
         </PopoverContent>
         </Popover>
 				
 			</div>
 		</div>
-	
-	{/* <img src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" className="w-5/6 mx-auto mb-12 -mt-20 dark:bg-gray-500 rounded-lg shadow-md lg:-mt-40" /> */}
+ 
 </section>
    
     </>
-  )
-}
+  
+ )}
 
 export default Home;
