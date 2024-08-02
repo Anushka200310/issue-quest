@@ -167,11 +167,6 @@ const Profile = () => {
       </PopoverContent>
       </Popover>
         </form>
-
-        <div className='absolute left-[18%] sm:left-[30%] lg:left-[35%] mt-2'>
-          <h2 className='dark:text-indigo-300'><Link to='/logout'>Logout</Link></h2>
-        </div>
-
       </div>
       <Toaster />
     </>

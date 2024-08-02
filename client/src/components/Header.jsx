@@ -10,11 +10,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { CiMenuFries } from "react-icons/ci";
 import { Input } from "@/components/ui/input";
-import { CiSearch } from "react-icons/ci";
 import { Link, useLocation } from "react-router-dom";
 import useAuth from "@/store/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CircleDot } from "lucide-react";
+import { Bug, CircleDot, Home, LogIn, LogOut } from "lucide-react";
 
 const Header = () => {
   const { isLoggedIn, user } = useAuth();
@@ -32,28 +31,26 @@ const Header = () => {
             <>
               {" "}
               <Input
-                className="dark:border-slate-400 bg-transparent focus-visible:ring-0"
+                className="dark:border-slate-400 mr-3 bg-transparent focus-visible:ring-0"
                 placeholder="search..."
               />
-              <CiSearch />
             </>
           ) : null}
         </form>
 
         {/* desktop menu */}
-        <ul className="hidden md:flex gap-10">
+        {isLoggedIn ?
+        (<ul className="hidden md:flex gap-10">
           <li className="hover:text-gray-400">
-            <Link to="/">Home</Link>
+            <Link to="/" className="flex items-center gap-2"><Home />Home</Link>
           </li>
           <li className="hover:text-gray-400">
-            <Link to="/article">Issues</Link>
+            <Link to="/article" className="flex items-center gap-2"><Bug />Issues</Link>
           </li>
-          {!isLoggedIn ? (
-            <li className="hover:text-gray-400">
-              <Link to="/signup">Sign up</Link>
-            </li>
-          ) : null}
-        </ul>
+          <li className="hover:text-gray-400">
+          <Link to="/logout" className="flex items-center gap-2"><LogOut />Log out</Link>
+        </li>
+        </ul>) : null }
       </div>
 
       <div className="flex gap-3">
@@ -114,7 +111,8 @@ const Header = () => {
             </div>
           </div>
         ) : (
-          <div className="p-5 focus:outline-none">
+          <div className="p-5 focus:outline-none flex items-center gap-6">
+             <Link to="/signup" className="hidden md:flex items-center gap-2"><LogIn />Signup</Link>
             <ModeToggle className="focus-visible:ring-0" />
           </div>
         )}

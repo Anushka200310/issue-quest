@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const postSchema = new Schema({
-    name : {
+    title : {
         type: String,
         required: true,
     },
@@ -9,7 +9,7 @@ const postSchema = new Schema({
         type: String,
         required: true,
     },
-    address : {
+    label : {
         type: String,
         required: true,
     },

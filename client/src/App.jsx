@@ -11,10 +11,9 @@ function App() {
      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme"> 
       <Header />
         <Outlet />
-        <Footer />
       </ThemeProvider>
     </>
   )
 }
 
-export default App
+export default App;

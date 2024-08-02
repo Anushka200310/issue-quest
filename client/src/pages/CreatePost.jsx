@@ -12,9 +12,9 @@ const createPost = () => {
     const [files, setFiles] = useState([]);
     const [formData, setFormData] = useState({
       imageUrls : [],
-      name : '',
+      title : '',
       description : '',
-      address : '',
+      label : '',
     });
     const [imageUploadError, setImageUploadError] = useState(false);
     const [uploading, setUploading] = useState(false);
@@ -143,9 +143,9 @@ const createPost = () => {
       <h1 className='text-center font-semibold text-4xl sm:text-5xl mt-8 text-slate-500 dark:text-slate-300 my-7'>Create Issue</h1>
       <form onSubmit={handleFormSubmit} className='flex flex-col sm:flex-row gap-4'>
        <div className='flex flex-col gap-3 flex-1'>
-          <input onChange={handleChange} value={formData.name} type='text' id='name' placeholder='name' className='border border-slate-200 bg-transparent rounded-md p-2' maxLength='62' minLength='10' />
+          <input onChange={handleChange} value={formData.name} type='text' id='title' placeholder='title' className='border border-slate-200 bg-transparent rounded-md p-2' maxLength='62' minLength='10' />
           <textarea onChange={handleChange} value={formData.description} type='text' id='description' placeholder='description...' required className='border border-slate-200 bg-transparent rounded-md p-2' />
-          <input onChange={handleChange} value={formData.address} type='text' id='address' placeholder='address' className='border border-slate-200 bg-transparent rounded-md p-2' required />
+          <input onChange={handleChange} value={formData.label} type='text' id='label' placeholder='label' className='border border-slate-200 bg-transparent rounded-md p-2' required />
 
         </div>
 
