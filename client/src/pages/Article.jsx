@@ -1,7 +1,7 @@
 // //aefaced364f008600ef2878167c9f10a5178784c1cf2798c713249a9f4d9168c
 
 import useAuth from "@/store/auth";
-import { CircleDot } from "lucide-react";
+import { CircleDot, Edit, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
@@ -67,7 +67,7 @@ const Article = () => {
       ) : null}
       {listing && listing.length > 0 && (
         <div className="flex flex-col gap-4 px-3 sm:px-[10%] md:px-[25%]">
-          <h1 className="text-center text-2xl my-7 font-semibold">
+          <h1 className="text-center text-3xl my-7 font-semibold">
             Your Issues
           </h1>
           {listing.map((list) => (
@@ -75,7 +75,7 @@ const Article = () => {
               key={list._id}
               className="border flex justify-between items-center p-3 gap-4"
             >
-              <Link to={`/post/${list._id}`}>
+              <Link to={`/issue/${list._id}`}>
                 <img
                   src={list.imageUrls[0]}
                   className="h-16 w-16 object-contain"
@@ -83,18 +83,22 @@ const Article = () => {
               </Link>
               <Link
                 className="text-slate-700 font-semibold flex-1 hover:underline truncate"
-                to={`/post/${list._id}`}
+                to={`/issue/${list._id}`}
               >
                 <p>{list.title}</p>
               </Link>
-              <div className="flex flex-col">
+              <div className="flex items-center justify-center space-x-2">
                 <button
                   onClick={() => handleDeleteListing(list._id)}
                   className="text-red-700"
                 >
-                  Delete
+                  <Trash className="w-5 h-5" />
                 </button>
-                <button className="text-green-600">Edit</button>
+                <Link to={`/update-issue/${list._id}`}>
+                  <button className="text-green-600">
+                    <Edit className="w-5 h-5" />
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

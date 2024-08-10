@@ -11,6 +11,8 @@ import { AuthProvider } from './store/auth.jsx'
 import Profile from './pages/Profile.jsx'
 import CreatePost from './pages/CreatePost.jsx'
 import Article from './pages/Article.jsx'
+import UpdateIssue from './pages/UpdateIssue.jsx'
+import Issue from './pages/Issue.jsx'
 
 
 
@@ -28,6 +30,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/logout' element={<Logout />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/create' element={<CreatePost />} />
+        <Route path='/update-issue/:id' element={<UpdateIssue />} />
+        <Route path='/issue/:id' element={<Issue />} />
       </Route>
     </Routes>
     </BrowserRouter>

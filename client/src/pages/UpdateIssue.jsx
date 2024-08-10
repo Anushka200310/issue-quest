@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import useAuth from '@/store/auth';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { app } from '@/firebase';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-const createPost = () => {
+const UpdateIssue = () => {
 
     const { isLoggedIn } = useAuth();
     const [files, setFiles] = useState([]);
@@ -19,8 +19,6 @@ const createPost = () => {
     const [imageUploadError, setImageUploadError] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [loading, setLoading] = useState(false);
-
-    console.log(formData);
     
 
     if(!isLoggedIn){
@@ -29,8 +27,24 @@ const createPost = () => {
 
     const { API, AuthToken, user } = useAuth();
 
-    const URL = `${API}/api/post/create`
+    const URL = `${API}/api/post`
     const navigate = useNavigate();
+    const params = useParams();
+
+    useEffect(() => {
+     const fetchIssue = async()=>{
+        const IssueId = params.id
+        const res = await fetch(`${URL}/get/${IssueId}`)
+        const data = await res.json()
+        if(data.success === false){
+            console.log(data.message)
+            return; 
+        }
+        setFormData(data)
+     }
+     fetchIssue();
+    }, [])
+    
 
     const handleSubmit = (e)=>{
       if(files.length > 0 && files.length + formData.imageUrls.length < 7){
@@ -51,7 +65,7 @@ const createPost = () => {
           setUploading(false)
         });
       }else{
-        setImageUploadError("You can only upload 6 images per listing");
+        setImageUploadError("You can only upload maximum of 6 images per issue");
         setUploading(false)
       }
 
@@ -112,7 +126,7 @@ const createPost = () => {
           toast.error("you must upload atleast one image");
         }
         setLoading(true)
-        const response = await fetch(URL, {
+        const response = await fetch(`${URL}/update/${params.id}`, {
           method : 'POST',
           headers : {
             'Content-Type' : 'application/json',
@@ -140,7 +154,7 @@ const createPost = () => {
     }
   return (
     <div className='p-6 max-w-4xl mx-auto h-screen'>
-      <h1 className='text-center font-semibold text-4xl sm:text-5xl mt-8 text-slate-500 dark:text-slate-300 my-7'>Create Issue</h1>
+      <h1 className='text-center font-semibold text-4xl sm:text-5xl mt-8 text-slate-500 dark:text-slate-300 my-7'>Update Issue</h1>
       <form onSubmit={handleFormSubmit} className='flex flex-col sm:flex-row gap-4'>
        <div className='flex flex-col gap-3 flex-1'>
           <input onChange={handleChange} value={formData.title} type='text' id='title' placeholder='title' className='border border-slate-200 bg-transparent rounded-md p-2' maxLength='62' minLength='10' />
@@ -167,7 +181,7 @@ const createPost = () => {
               </div> 
             ))
           }
-          <button disabled={loading || uploading} className='p-3 mt-8 bg-slate-600 text-white rounded-xl uppercase hover:opacity-95 disabled:opacity-80 '>{loading ? 'Creating...' : 'Create Issue'}</button>
+          <button disabled={loading || uploading} className='p-3 mt-8 bg-slate-600 text-white rounded-xl uppercase hover:opacity-95 disabled:opacity-80 '>{loading ? 'Updating...' : 'Update Issue'}</button>
         </div>
 
       </form>
@@ -176,4 +190,4 @@ const createPost = () => {
   )
 }
 
-export default createPost;
+export default UpdateIssue;

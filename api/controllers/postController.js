@@ -58,6 +58,18 @@ export const updatePost = async(req, res, next)=>{
 
 }
 
+export const getPost = async(req, res, next)=>{
+    try {
+       const getpost = await Post.findById(req.params.id);
+       if(!getpost){
+         return res.status(404).json({msg : "post not found"});
+       }
+       res.status(200).json(getpost);
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 
 
