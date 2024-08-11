@@ -47,10 +47,12 @@ const Issue = () => {
     <div>
       {issue && !loading && !error && 
        <div>
-         <img
+        <div className="w-full h-60 relative">
+           <img
               src={issue.imageUrls[0]}
-              className="h-60 w-[100vw]"
+               className="w-full h-full object-cover"
             />
+        </div>    
               <h1 className='text-4xl mx-4 font-bold my-4 dark:text-slate-400' >
                  {issue.title}
               </h1>

@@ -70,34 +70,32 @@ const Article = () => {
           <h1 className="text-center text-3xl my-7 font-semibold">
             Your Issues
           </h1>
-          {listing.map((list) => (
+          {listing.map((issue) => (
             <div
-              key={list._id}
+              key={issue._id}
               className="border flex justify-between items-center p-3 gap-4"
             >
-              <Link to={`/issue/${list._id}`}>
+              <Link to={`/issue/${issue._id}`}>
                 <img
-                  src={list.imageUrls[0]}
+                  src={issue.imageUrls[0]}
                   className="h-16 w-16 object-contain"
                 />
               </Link>
               <Link
                 className="text-slate-700 font-semibold flex-1 hover:underline truncate"
-                to={`/issue/${list._id}`}
+                to={`/issue/${issue._id}`}
               >
-                <p>{list.title}</p>
+                <p>{issue.title}</p>
               </Link>
               <div className="flex items-center justify-center space-x-2">
                 <button
-                  onClick={() => handleDeleteListing(list._id)}
+                  onClick={() => handleDeleteListing(issue._id)}
                   className="text-red-700"
                 >
                   <Trash className="w-5 h-5" />
                 </button>
-                <Link to={`/update-issue/${list._id}`}>
-                  <button className="text-green-600">
-                    <Edit className="w-5 h-5" />
-                  </button>
+                <Link to={`/update-issue/${issue._id}`} className="text-green-600">
+                    <Edit className="w-4 h-4" />
                 </Link>
               </div>
             </div>
