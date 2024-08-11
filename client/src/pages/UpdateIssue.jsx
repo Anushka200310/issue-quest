@@ -144,8 +144,8 @@ const UpdateIssue = () => {
         const data = await response.json();
         console.log(data)
         setLoading(false)
-      //  navigate(`/post/${data._id}`)
-        navigate('/article')
+        navigate(`/issue/${data._id}`)
+        // navigate('/article')
       } catch (error) {
         console.log(error)
         setLoading(false)
