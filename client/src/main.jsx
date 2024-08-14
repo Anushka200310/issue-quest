@@ -15,8 +15,6 @@ import UpdateIssue from './pages/UpdateIssue.jsx'
 import Issue from './pages/Issue.jsx'
 
 
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
   <React.StrictMode>
@@ -24,7 +22,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Routes>
       <Route path='/' element={<App />} >
         <Route index element={<Home />} />
-        <Route path='/article' element={<Article />} />
+        <Route path='/issue-list' element={<Article />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<LogIn />} />
         <Route path='/logout' element={<Logout />} />

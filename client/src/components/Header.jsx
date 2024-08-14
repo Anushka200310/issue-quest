@@ -45,7 +45,7 @@ const Header = () => {
             <Link to="/" className="flex items-center gap-2"><Home />Home</Link>
           </li>
           <li className="hover:text-gray-400">
-            <Link to="/article" className="flex items-center gap-2"><Bug />Issues</Link>
+            <Link to="/issue-list" className="flex items-center gap-2"><Bug />Issues</Link>
           </li>
           <li className="hover:text-gray-400">
           <Link to="/logout" className="flex items-center gap-2"><LogOut />Log out</Link>
@@ -80,7 +80,7 @@ const Header = () => {
               <Link to="/">Home</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link to="/article">Issues</Link>
+              <Link to="/issue-list">Issues</Link>
             </DropdownMenuItem>
             {isLoggedIn ? (
               <DropdownMenuItem>

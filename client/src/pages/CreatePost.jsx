@@ -131,7 +131,6 @@ const createPost = () => {
         console.log(data)
         setLoading(false)
         navigate(`/issue/${data._id}`)
-        // navigate('/article')
       } catch (error) {
         console.log(error)
         setLoading(false)

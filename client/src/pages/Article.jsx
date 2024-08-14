@@ -1,4 +1,3 @@
-// //aefaced364f008600ef2878167c9f10a5178784c1cf2798c713249a9f4d9168c
 
 import useAuth from "@/store/auth";
 import { CircleDot, Edit, Trash } from "lucide-react";
@@ -7,17 +6,19 @@ import { Link, Navigate } from "react-router-dom";
 
 const Article = () => {
   const { isLoggedIn, user, API, AuthToken } = useAuth();
-  const [listingError, setListingError] = useState(false);
-  const [listing, setListing] = useState([]);
+  const [issueError, setIssueError] = useState(false);
+  const [issueListing, setListing] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   if (!isLoggedIn) {
     return <Navigate to="/signup" />;
   }
 
   useEffect(() => {
-    const handleShowListing = async () => {
+    const handleShowIssue = async () => {
       try {
-        setListingError(false);
+        setIssueError(false);
+        setLoading(true); // Start loading
         const response = await fetch(`${API}/api/user/posts/${user._id}`, {
           method: "GET",
           headers: {
@@ -26,20 +27,21 @@ const Article = () => {
           },
         });
         if (!response.ok) {
-          setListingError(true);
+          throw new Error("Failed to fetch issues");
         }
         const data = await response.json();
         setListing(data);
-        console.log(listing);
       } catch (error) {
-        setListingError(true);
+        setIssueError(true);
+      } finally {
+        setLoading(false); // End loading
       }
     };
 
-    handleShowListing();
-  }, []);
+    handleShowIssue();
+  }, [API, AuthToken, user._id]);
 
-  const handleDeleteListing = async (listingId) => {
+  const handleDeleteIssue = async (listingId) => {
     try {
       const response = await fetch(`${API}/api/post/delete/${listingId}`, {
         method: "DELETE",
@@ -51,26 +53,28 @@ const Article = () => {
       if (!response.ok) {
         toast.error("Couldn't delete, try again");
       }
-      const data = await response.json();
-
       setListing((prev) => prev.filter((list) => list._id !== listingId));
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <div className="h-screen">
-      {listingError ? (
+      {loading ? (
+        <h2 className="dark:text-slate-400 flex items-center justify-center h-screen">
+          Loading...
+        </h2>
+      ) : issueError ? (
         <h2 className="dark:text-gray-400 flex items-center justify-center h-screen">
           No Issues <CircleDot className="mr-2" /> Available
         </h2>
-      ) : null}
-      {listing && listing.length > 0 && (
+      ) : issueListing.length > 0 ? (
         <div className="flex flex-col gap-4 px-3 sm:px-[10%] md:px-[25%]">
           <h1 className="text-center text-3xl my-7 font-semibold">
             Your Issues
           </h1>
-          {listing.map((issue) => (
+          {issueListing.map((issue) => (
             <div
               key={issue._id}
               className="border flex justify-between items-center p-3 gap-4"
@@ -89,7 +93,7 @@ const Article = () => {
               </Link>
               <div className="flex items-center justify-center space-x-2">
                 <button
-                  onClick={() => handleDeleteListing(issue._id)}
+                  onClick={() => handleDeleteIssue(issue._id)}
                   className="text-red-700"
                 >
                   <Trash className="w-5 h-5" />
@@ -101,9 +105,14 @@ const Article = () => {
             </div>
           ))}
         </div>
+      ) : (
+        <h2 className="dark:text-gray-400 flex items-center justify-center h-screen">
+          No Issues <CircleDot className="mr-2" /> Available
+        </h2>
       )}
     </div>
   );
 };
 
 export default Article;
+

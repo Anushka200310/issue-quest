@@ -1,5 +1,5 @@
 import useAuth from '@/store/auth';
-import { Loader2Icon } from 'lucide-react';
+import { Edit, Loader2Icon } from 'lucide-react';
 
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
@@ -47,11 +47,15 @@ const Issue = () => {
     <div>
       {issue && !loading && !error && 
        <div>
-        <div className="w-full h-60 relative">
+        <div className="w-full h-60 relative group">
            <img
               src={issue.imageUrls[0]}
                className="w-full h-full object-cover"
             />
+            <Link to={`/update-issue/${issue._id}`}>
+               <Edit className='absolute top-4 right-4 w-5 h-5 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300' />
+            </Link>
+          
         </div>    
               <h1 className='text-4xl mx-4 font-bold my-4 dark:text-slate-400' >
                  {issue.title}
