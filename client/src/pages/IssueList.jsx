@@ -4,7 +4,7 @@ import { CircleDot, Edit, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 
-const Article = () => {
+const IssueList = () => {
   const { isLoggedIn, user, API, AuthToken } = useAuth();
   const [issueError, setIssueError] = useState(false);
   const [issueListing, setListing] = useState([]);
@@ -114,5 +114,5 @@ const Article = () => {
   );
 };
 
-export default Article;
+export default IssueList;
 

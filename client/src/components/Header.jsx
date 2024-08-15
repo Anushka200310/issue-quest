@@ -27,7 +27,7 @@ const Header = () => {
       <div className="flex items-center gap-3 sm:gap-16">
         {/* search bar */}
         <form className="flex items-center gap-1 text-3xl cursor-pointer">
-          {isLoggedIn && pathname === "/article" ? (
+          {isLoggedIn && pathname === "/issue-list" ? (
             <>
               {" "}
               <Input

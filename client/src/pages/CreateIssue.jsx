@@ -6,7 +6,7 @@ import { app } from '@/firebase';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-const createPost = () => {
+const CreateIssue = () => {
 
     const { isLoggedIn } = useAuth();
     const [files, setFiles] = useState([]);
@@ -175,4 +175,4 @@ const createPost = () => {
   )
 }
 
-export default createPost;
+export default CreateIssue;
