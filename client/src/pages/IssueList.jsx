@@ -86,7 +86,7 @@ const IssueList = () => {
                 />
               </Link>
               <Link
-                className="text-slate-700 font-semibold flex-1 hover:underline truncate"
+                className="text-slate-500 font-semibold flex-1 hover:underline truncate"
                 to={`/issue/${issue._id}`}
               >
                 <p>{issue.title}</p>

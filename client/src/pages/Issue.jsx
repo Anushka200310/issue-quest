@@ -60,6 +60,8 @@ const Issue = () => {
                  {issue.title}
               </h1>
               <p className='mx-4 font-light text-lg mb-4 dark:text-slate-400 max-w-5xl'>{issue.description}</p>
+              <p className='mx-4 mb-4'>Priority-{issue.priority}</p>
+              <p className='mx-4 mb-4'>Status-{issue.status}</p>
               <button className='py-1 px-5 text-sm bg-green-300 dark:bg-green-400 mx-4 rounded-2xl dark:text-slate-700'>{issue.label}</button>   
         </div>}
     </div>

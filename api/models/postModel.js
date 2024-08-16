@@ -9,9 +9,19 @@ const postSchema = new Schema({
         type: String,
         required: true,
     },
+    priority: {
+        type: String,
+        required: true,
+        enum: ["high", "medium", "low"],  
+    },
     label : {
         type: String,
         required: true,
+    },
+    status: {
+        type: String,
+        required: true,
+        enum: ["open", "in progress", "closed"],
     },
     imageUrls : {
         type: Array,
