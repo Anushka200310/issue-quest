@@ -49,7 +49,7 @@ const Home = () => {
                 <p className="text-zinc-500">
                   Issue Quest streamlines issue tracking, management, and
                   resolution, providing a seamless and user-friendly experience{" "}
-                  <Link to="/article" className="font-bold">
+                  <Link to="/issue-list" className="font-bold">
                     tap
                   </Link>
                 </p>

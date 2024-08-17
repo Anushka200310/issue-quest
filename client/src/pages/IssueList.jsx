@@ -1,4 +1,3 @@
-
 import useAuth from "@/store/auth";
 import { CircleDot, Edit, Trash } from "lucide-react";
 import React, { useEffect, useState } from "react";
@@ -98,8 +97,11 @@ const IssueList = () => {
                 >
                   <Trash className="w-5 h-5" />
                 </button>
-                <Link to={`/update-issue/${issue._id}`} className="text-green-600">
-                    <Edit className="w-4 h-4" />
+                <Link
+                  to={`/update-issue/${issue._id}`}
+                  className="text-green-600"
+                >
+                  <Edit className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -115,4 +117,3 @@ const IssueList = () => {
 };
 
 export default IssueList;
-

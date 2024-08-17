@@ -22,7 +22,9 @@ const Header = () => {
   return (
     <header className="flex items-center justify-between top-0 sticky z-50 shadow-md dark:shadow-slate-700 backdrop-blur-lg">
       <div className="p-5 text-2xl text-blue-950 font-extralight dark:text-indigo-200">
-        <Link to="/" className="flex items-center md:gap-2">Issue Quest <CircleDot className="hidden md:block" /></Link>
+        <Link to="/" className="flex items-center md:gap-2">
+          Issue Quest <CircleDot className="hidden md:block" />
+        </Link>
       </div>
       <div className="flex items-center gap-3 sm:gap-16">
         {/* search bar */}
@@ -39,18 +41,41 @@ const Header = () => {
         </form>
 
         {/* desktop menu */}
-        {isLoggedIn ?
-        (<ul className="hidden md:flex gap-10">
-          <li className="hover:text-gray-400">
-            <Link to="/" className="flex items-center gap-2"><Home />Home</Link>
-          </li>
-          <li className="hover:text-gray-400">
-            <Link to="/issue-list" className="flex items-center gap-2"><Bug />Issues</Link>
-          </li>
-          <li className="hover:text-gray-400">
-          <Link to="/logout" className="flex items-center gap-2"><LogOut />Log out</Link>
-        </li>
-        </ul>) : null }
+        {isLoggedIn ? (
+          <ul className="hidden md:flex gap-10">
+            <li>
+              <Link
+                to="/"
+                className={`flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white ${
+                  pathname === "/" && "text-slate-900 dark:text-white"
+                }`}
+              >
+                <Home />
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/issue-list"
+                className={`flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white ${
+                  pathname === "/issue-list" && "text-slate-900 dark:text-white"
+                }`}
+              >
+                <Bug />
+                Issues
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/logout"
+                className="flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+              >
+                <LogOut />
+                Log out
+              </Link>
+            </li>
+          </ul>
+        ) : null}
       </div>
 
       <div className="flex gap-3">
@@ -112,7 +137,10 @@ const Header = () => {
           </div>
         ) : (
           <div className="p-5 focus:outline-none flex items-center gap-6">
-             <Link to="/signup" className="hidden md:flex items-center gap-2"><LogIn />Signup</Link>
+            <Link to="/signup" className="hidden md:flex items-center gap-2">
+              <LogIn />
+              Signup
+            </Link>
             <ModeToggle className="focus-visible:ring-0" />
           </div>
         )}
