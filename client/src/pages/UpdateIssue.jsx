@@ -136,6 +136,7 @@ const UpdateIssue = () => {
     try {
       if (formData.imageUrls.length < 1) {
         toast.error("you must upload atleast one image");
+        return;
       }
       setLoading(true);
       const response = await fetch(`${URL}/update/${params.id}`, {
