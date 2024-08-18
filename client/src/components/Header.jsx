@@ -46,8 +46,8 @@ const Header = () => {
             <li>
               <Link
                 to="/"
-                className={`flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white ${
-                  pathname === "/" && "text-slate-900 dark:text-white"
+                className={`flex items-center gap-2 text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white ${
+                  pathname === "/" && "font-bold"
                 }`}
               >
                 <Home />
@@ -57,8 +57,8 @@ const Header = () => {
             <li>
               <Link
                 to="/issue-list"
-                className={`flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white ${
-                  pathname === "/issue-list" && "text-slate-900 dark:text-white"
+                className={`flex items-center gap-2 text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white ${
+                  pathname === "/issue-list" && "font-bold"
                 }`}
               >
                 <Bug />
@@ -68,7 +68,7 @@ const Header = () => {
             <li>
               <Link
                 to="/logout"
-                className="flex items-center gap-2 text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
+                className="flex items-center gap-2 text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white"
               >
                 <LogOut />
                 Log out
@@ -95,7 +95,7 @@ const Header = () => {
                     </Link>
                     <AvatarFallback>Img</AvatarFallback>
                   </Avatar>
-                  <DropdownMenuLabel>Profile</DropdownMenuLabel>
+                  <DropdownMenuLabel><Link to="/profile">Profile</Link></DropdownMenuLabel>
                 </div>
                 <DropdownMenuSeparator />
               </>

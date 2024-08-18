@@ -39,7 +39,7 @@ const Issue = () => {
       <div className="flex items-center justify-center flex-col space-y-2">
         {loading && (
           <p className="flex items-center justify-center mt-[50%] md:mt-[15%] animate-spin">
-            <Loader2Icon className="w-8 h-8 text-green-500 dark:text-green-400" />
+            <Loader2Icon className="w-8 h-8 text-black dark:text-slate-300" />
           </p>
         )}
         {error && (
