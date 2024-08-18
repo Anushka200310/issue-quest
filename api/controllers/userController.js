@@ -37,7 +37,8 @@ export const getUserPost = async(req, res, next)=>{
          try {
              const listings = await Post.find({userRef: req.params.id});
              if (listings.length === 0) {
-                res.status(404).json({ message: 'No listings found for the user' });
+              //  res.status(404).json({ message: 'No listings found for the user' });
+                res.status(200).json([]); 
              } else {
                 res.status(200).json(listings);
              }
