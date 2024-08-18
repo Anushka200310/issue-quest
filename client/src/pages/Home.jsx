@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
 import {
@@ -10,47 +11,44 @@ import Footer from "@/components/Footer";
 
 const Home = () => {
   const { isLoggedIn } = useAuth();
+  
   return (
     <>
-      <section>
-        <div className="container flex flex-col items-center px-5 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 dark:text-gray-50">
-          <h1 className="text-4xl font-bold leading-none sm:text-6xl xl:max-w-4xl text-gray-700 dark:text-gray-300">
+      <section className="relative bg-gray-50 dark:bg-gray-900 overflow-hidden h-screen">
+        <div className="container flex flex-col items-center px-5 py-16 mx-auto text-center lg:py-24 md:px-10 lg:px-32 dark:text-gray-50">
+          <h1 className="text-4xl font-extrabold leading-tight sm:text-6xl xl:max-w-4xl text-gray-800 dark:text-gray-200">
             Streamline Your GitHub Issue Management with{" "}
-            <span className="text-slate-600 dark:text-slate-100">
+            <span className="text-blue-600 dark:text-blue-400">
               Issue Quest
             </span>
           </h1>
-          <p className="mt-6 mb-8 text-md md:text-lg sm:mb-12 xl:max-w-3xl dark:text-gray-300">
+          <p className="mt-6 mb-8 text-lg sm:text-xl xl:max-w-3xl text-gray-600 dark:text-gray-400">
             Keep all your project issues in one place, making it easier to track
-            and manage them
+            and manage them.
           </p>
-          <div className="flex flex-wrap justify-center">
-            <button
-              type="button"
-              className="px-8 py-3 m-2 text-lg font-medium rounded-lg border border-blue-950 hover:shadow-xl bg-gray-700 text-white dark:border-gray-500 dark:bg-gray-200 dark:text-gray-700"
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              to={isLoggedIn ? "/create" : "/signup"}
+              className="px-8 py-3 text-lg font-semibold rounded-lg transition-transform transform hover:scale-105 bg-blue-600 text-white dark:bg-blue-500 dark:text-gray-900 border border-transparent hover:shadow-lg"
             >
-              {isLoggedIn ? (
-                <Link to="/create">Create</Link>
-              ) : (
-                <Link to="/signup">Join</Link>
-              )}
-            </button>
+              {isLoggedIn ? "Create" : "Join"}
+            </Link>
             <Popover>
               <PopoverTrigger asChild>
                 <button
                   type="button"
-                  className="px-8 py-3 m-2 text-lg font-extralight border border-gray-600 rounded-lg hover:shadow-xl dark:border-gray-300 dark:text-gray-50"
+                  className="px-8 py-3 text-lg font-medium border border-gray-600 rounded-lg transition-transform transform hover:scale-105 dark:border-gray-300 dark:text-gray-50 hover:shadow-lg dark:hover:shadow-md"
                 >
-                  Learn more
+                  Learn More
                 </button>
               </PopoverTrigger>
 
-              <PopoverContent className="w-80">
-                <p className="text-zinc-500">
+              <PopoverContent className="w-80 p-4 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg dark:shadow-xl rounded-lg">
+                <p className="text-gray-600 dark:text-gray-300">
                   Issue Quest streamlines issue tracking, management, and
-                  resolution, providing a seamless and user-friendly experience{" "}
-                  <Link to="/issue-list" className="font-bold">
-                    tap
+                  resolution, providing a seamless and user-friendly experience.{" "}
+                  <Link to="/issue-list" className="font-semibold text-blue-600 dark:text-blue-400">
+                    Learn more
                   </Link>
                 </p>
               </PopoverContent>
@@ -64,3 +62,4 @@ const Home = () => {
 };
 
 export default Home;
+
