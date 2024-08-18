@@ -1,10 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import useAuth from "@/store/auth";
 import Footer from "@/components/Footer";
 
@@ -33,7 +28,7 @@ const Home = () => {
               {isLoggedIn ? "Create" : "Join"}
             </Link>
           </div>
-          <img src='/signup.svg' className="w-[50%]" />
+          <img src="/signup.svg" className="w-[50%]" />
         </div>
       </section>
       <Footer />
