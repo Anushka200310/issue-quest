@@ -125,10 +125,10 @@ const UpdateIssue = () => {
 
   const handleChange = (e) => {
     setFormData({
-        ...formData,
-        [e.target.id]: e.target.value,
+      ...formData,
+      [e.target.id]: e.target.value,
     });
-};
+  };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -197,9 +197,15 @@ const UpdateIssue = () => {
             required
           >
             <option value="">Choose an option</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+            <option value="low" className="text-black">
+              Low
+            </option>
+            <option value="medium" className="text-black">
+              Medium
+            </option>
+            <option value="high" className="text-black">
+              High
+            </option>
           </select>
           <input
             onChange={handleChange}
@@ -210,12 +216,33 @@ const UpdateIssue = () => {
             className="border border-slate-200 bg-transparent rounded-md p-2"
             required
           />
+          <select
+            onChange={handleChange}
+            value={formData.status}
+            id="status"
+            className="border border-slate-200 bg-transparent rounded-md p-2"
+          >
+            <option value="" disabled className="text-black">
+              Select status
+            </option>
+            <option value="open" className="text-black">
+              Open
+            </option>
+            <option value="in progress" className="text-black">
+              In Progress
+            </option>
+            <option value="closed" className="text-black">
+              Closed
+            </option>
+          </select>
         </div>
 
         <div className="flex flex-col flex-1">
           <p className="font-semibold mb-3">
             Images:
             <span className="font-normal text-gray-600 dark:text-gray-400 ml-2">
+              Attach relevant images to provide visual context.
+              <br />
               The first image will be the cover (max 6)
             </span>
           </p>

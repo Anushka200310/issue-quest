@@ -1,36 +1,30 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '@/store/auth.jsx';
 import OAuth from '@/components/OAuth';
 
-
 const SignUp = () => {
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-  })
+  });
 
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const { storeTokenInLS, API, user } = useAuth();
-
   const URL = `${API}/api/auth/signup`;
-
   const navigate = useNavigate();
 
-  const handleChange =(e)=>{
-    setFormData(
-      {
-        ...formData,
-        [e.target.id] : e.target.value,
-      }
-    );
-  }
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
@@ -41,115 +35,123 @@ const SignUp = () => {
         },
         body: JSON.stringify(formData),
       });
-  
-  
-      const data = await res.json();
-      console.log(data);
 
+      const data = await res.json();
       if (res.ok) {
         storeTokenInLS(data.token);
         setLoading(false);
         setFormData({
-          name : "",
-          email : "",
-          password : "",
+          name: '',
+          email: '',
+          password: '',
         });
-        console.log("registration successful");
         navigate('/');
-      }else{
+      } else {
         throw new Error('Network response was not ok');
       }
     } catch (error) {
       console.log(error);
     }
   };
-  
-  return (
-    <section >
-         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h1 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-black dark:text-slate-200">
-            Sign up to your account
-          </h1>
-        </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-          <div>
-              <label htmlFor="name" className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
-                Name
-              </label>
-              <div className="mt-2">
+  return (
+    <section className="flex flex-col min-h-screen bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="flex flex-col md:flex-row w-full">
+        <div className="flex justify-center items-center md:w-1/2 w-full p-8">
+          <div className="w-full max-w-md bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
+            <h1 className="text-4xl font-bold text-center text-gray-900 dark:text-slate-200">
+              Create an Account
+            </h1>
+            <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 dark:text-slate-400"
+                >
+                  Name
+                </label>
                 <input
                   id="name"
                   name="name"
                   type="text"
                   autoComplete="off"
                   required
-                  placeholder='enter your name'
+                  placeholder="Enter your name"
                   onChange={handleChange}
-                  className="block w-full bg-transparent rounded-md border-0 py-1.5 px-3 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
+                  className="mt-2 w-full rounded-md border border-gray-300 dark:border-gray-600 bg-transparent py-2 px-4 text-gray-900 dark:text-white shadow-sm placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                 />
               </div>
-            </div>
 
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
-                Email address
-              </label>
-              <div className="mt-2">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 dark:text-slate-400"
+                >
+                  Email address
+                </label>
                 <input
                   id="email"
                   name="email"
                   type="email"
                   autoComplete="off"
-                  placeholder='example@gmail.com'
+                  placeholder="example@gmail.com"
                   required
                   onChange={handleChange}
-                  className="block w-full bg-transparent rounded-md border-0 py-1.5 px-3 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
+                  className="mt-2 w-full rounded-md border border-gray-300 dark:border-gray-600 bg-transparent py-2 px-4 text-gray-900 dark:text-white shadow-sm placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                 />
               </div>
-            </div>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400">
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block text-sm font-medium text-gray-700 dark:text-slate-400"
+                >
                   Password
                 </label>
-              </div>
-              <div className="mt-2">
                 <input
                   id="password"
                   name="password"
                   type="password"
                   autoComplete="off"
-                  placeholder='********'
+                  placeholder="********"
                   required
                   onChange={handleChange}
-                  className="block w-full bg-transparent rounded-md border-0 py-1.5 px-3 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
+                  className="mt-2 w-full rounded-md border border-gray-300 dark:border-gray-600 bg-transparent py-2 px-4 text-gray-900 dark:text-white shadow-sm placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
                 />
               </div>
-            </div>
 
-            <div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              <div>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full flex justify-center items-center rounded-md bg-indigo-600 dark:bg-indigo-500 py-2 px-4 text-sm font-semibold text-white hover:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 shadow-md"
+                >
+                  {loading ? 'Loading...' : 'Sign up'}
+                </button>
+                <OAuth />
+              </div>
+            </form>
+            <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
+              Already have an account?{' '}
+              <Link
+                to="/login"
+                className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
               >
-                {loading ? (<>loading...</>) : (<>Sign up</>)}
-              </button>
-              <OAuth />
-            </div>
-          </form>
-          <p className='text-slate-950 mt-4 dark:text-slate-500 '>already have an account? <Link to='/login'>Log in</Link></p>
+                Log in
+              </Link>
+            </p>
+          </div>
+        </div>
+        <div className="md:w-1/2 w-full p-8 flex justify-center items-center mt-6 md:mt-0">
+          <img
+            src="/signup.svg"
+            alt="Sign up"
+            className="w-full h-full object-contain"
+          />
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default SignUp;
-
-
-

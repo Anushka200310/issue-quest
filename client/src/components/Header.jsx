@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Link, useLocation } from "react-router-dom";
 import useAuth from "@/store/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Bug, CircleDot, Home, LogIn, LogOut } from "lucide-react";
+import { Bug, CircleDot, Home, LogOut, User } from "lucide-react";
 
 const Header = () => {
   const { isLoggedIn, user } = useAuth();
@@ -138,7 +138,7 @@ const Header = () => {
         ) : (
           <div className="p-5 focus:outline-none flex items-center gap-6">
             <Link to="/signup" className="hidden md:flex items-center gap-2">
-              <LogIn />
+              <User />
               Signup
             </Link>
             <ModeToggle className="focus-visible:ring-0" />

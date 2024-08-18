@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -13,9 +14,7 @@ const LogIn = () => {
   const [loading, setLoading] = useState(false);
 
   const { storeTokenInLS, API, user } = useAuth();
-
   const URL = `${API}/api/auth/login`;
-
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -51,84 +50,78 @@ const LogIn = () => {
         console.log("login successful");
         navigate("/");
       } else {
-        //throw new Error('Network response was not ok');
         setLoading(false);
-        toast.error("invalid credentials");
+        toast.error("Invalid credentials");
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
-    <section>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-14 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-black dark:text-slate-200">
-            Log in to your account
-          </h2>
-        </div>
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-gray-900 dark:to-black">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-10 max-w-md w-full">
+        <h2 className="text-3xl font-extrabold text-center text-gray-900 dark:text-white mb-8">
+          Log in to your account
+        </h2>
+        <form className="space-y-6" onSubmit={handleSubmit}>
+          <div>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
+              Email address
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="off"
+              placeholder="example@gmail.com"
+              required
+              onChange={handleChange}
+              className="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 py-2 px-4 text-gray-900 dark:text-gray-300 placeholder-gray-400"
+            />
+          </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleSubmit}>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400"
-              >
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="off"
-                  placeholder="example@gmail.com"
-                  required
-                  onChange={handleChange}
-                  className="block w-full bg-transparent rounded-md border-0 py-1.5 px-3 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+            >
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="off"
+              placeholder="********"
+              required
+              onChange={handleChange}
+              className="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 py-2 px-4 text-gray-900 dark:text-gray-300 placeholder-gray-400"
+            />
+          </div>
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium leading-6 text-gray-900 dark:text-slate-400"
-                >
-                  Password
-                </label>
-              </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="off"
-                  placeholder="********"
-                  required
-                  onChange={handleChange}
-                  className="block w-full bg-transparent rounded-md border-0 py-1.5 px-3 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold shadow-lg focus:ring-4 focus:ring-indigo-400 dark:focus:ring-indigo-700"
+          >
+            {loading ? "Loading..." : "Log in"}
+          </button>
 
-            <div className="flex flex-col">
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                {loading ? <>loading...</> : <>Log in</>}
-              </button>
-              <OAuth />
-            </div>
-          </form>
-          <p className="text-slate-950 mt-4 dark:text-slate-500 ">
-            don't have an account? <Link to="/signup">Sign up</Link>
-          </p>
-        </div>
+          <OAuth />
+        </form>
+        <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
+          Don't have an account?{" "}
+          <Link
+            to="/signup"
+            className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
+          >
+            Sign up
+          </Link>
+        </p>
       </div>
       <Toaster />
     </section>
