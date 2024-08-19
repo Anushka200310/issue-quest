@@ -93,7 +93,7 @@ const Header = () => {
                     <Link to="/profile">
                       <AvatarImage src={user.avatar} alt="profile picture" />
                     </Link>
-                    <AvatarFallback>Img</AvatarFallback>
+                    <AvatarFallback><Link to="/profile">Img</Link></AvatarFallback>
                   </Avatar>
                   <DropdownMenuLabel><Link to="/profile">Profile</Link></DropdownMenuLabel>
                 </div>
@@ -127,7 +127,7 @@ const Header = () => {
               <Link to="/profile">
                 <AvatarImage src={user.avatar} alt="profile picture" />
               </Link>
-              <AvatarFallback>img</AvatarFallback>
+              <AvatarFallback><Link to="/profile">img</Link></AvatarFallback>   
             </Avatar>
 
             {/*theme toggler */}
