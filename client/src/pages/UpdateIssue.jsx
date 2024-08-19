@@ -152,7 +152,7 @@ const UpdateIssue = () => {
   };
   return (
     <div className="p-6 max-w-4xl mx-auto h-screen">
-    <h1 className="text-center font-bold text-5xl mt-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 my-7">
+    <h1 className="text-center font-bold text-5xl mt-8 text-[#4682B4] dark:text-[#c9c3df] my-7">
       Update Issue
     </h1>
 

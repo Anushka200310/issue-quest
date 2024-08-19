@@ -81,7 +81,7 @@ const IssueList = () => {
         <NoIssue />
       ) : issueListing.length > 0 ? (
         <div className="flex flex-col gap-6 p-6 md:p-12">
-          <h1 className="text-4xl font-extrabold text-center text-gray-900 dark:text-gray-100">
+          <h1 className="text-4xl font-extrabold text-center text-gray-900 dark:text-[#c9c3df]">
             Your Issues
           </h1>
           {issueListing.map((issue) => (
