@@ -1,4 +1,3 @@
-
 import useAuth from "@/store/auth";
 import { Edit, Loader2Icon } from "lucide-react";
 import React, { useEffect, useState } from "react";
@@ -77,15 +76,27 @@ const Issue = () => {
             </p>
             <div className="flex flex-col space-y-4">
               <p className="text-xl dark:text-slate-300">
-                <span className="font-semibold">Priority:</span> {issue.priority}
+                <span className="font-semibold">Priority:</span>{" "}
+                {issue.priority}
               </p>
               <p className="text-xl dark:text-slate-300">
                 <span className="font-semibold">Status:</span> {issue.status}
               </p>
             </div>
-            <button className="mt-6 py-2 px-8 text-sm font-semibold bg-green-300 dark:bg-green-400 rounded-2xl dark:text-slate-700 shadow-md">
-               {issue.label}
-            </button>
+            <div className="mt-6 flex items-center space-x-2">
+              <button className="py-2 px-8 text-sm font-semibold bg-green-300 dark:bg-green-400 rounded-2xl dark:text-slate-700 shadow-md">
+                {issue.label}
+              </button>
+              {issue.githubRepoLink && (
+                <a
+                  href={issue.githubRepoLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src="/github.svg" alt="github icon" className="w-10" />
+                </a>
+              )}
+            </div>
           </div>
         )}
       </div>

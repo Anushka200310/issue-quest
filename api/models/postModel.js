@@ -23,6 +23,17 @@ const postSchema = new Schema({
         required: true,
         enum: ["open", "in progress", "closed"],
     },
+    githubRepoLink: {
+        type: String,
+        required: true,
+        validate: {
+          validator: function(v) {
+            const githubRepoRegex = /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
+            return githubRepoRegex.test(v);
+          },
+          message: props => `${props.value} is not a valid GitHub repository URL!`
+        }
+      },
     imageUrls : {
         type: Array,
         required: true

@@ -22,6 +22,7 @@ const UpdateIssue = () => {
     priority: "",
     label: "",
     status: "",
+    githubRepoLink: "",
   });
   const [imageUploadError, setImageUploadError] = useState(false);
   const [uploading, setUploading] = useState(false);
@@ -50,6 +51,11 @@ const UpdateIssue = () => {
     };
     fetchIssue();
   }, []);
+
+  const isValidGitHubRepoLink = (url) => {
+    const githubRepoRegex = /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
+    return githubRepoRegex.test(url);
+  };
 
   const handleSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
@@ -124,6 +130,11 @@ const UpdateIssue = () => {
     e.preventDefault();
 
     try {
+      if (!isValidGitHubRepoLink(formData.githubRepoLink)) {
+        toast.error("Please enter a valid GitHub repository URL.");
+        return; 
+      }
+
       if (formData.imageUrls.length < 1) {
         toast.error("you must upload atleast one image");
         return;
@@ -215,6 +226,17 @@ const UpdateIssue = () => {
         <option value="in progress">In Progress</option>
         <option value="closed">Closed</option>
       </select>
+
+      <input
+          onChange={handleChange}
+          value={formData.githubRepoLink}
+          type="text"
+          id="githubRepoLink"
+          placeholder="GitHub Repository Link"
+          required
+           className="w-full text-lg bg-transparent border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-300"
+        />
+
       <div className="flex flex-col flex-1 mt-6">
         <p className="font-semibold text-lg mb-3 text-gray-600 dark:text-gray-400">
           Images:
