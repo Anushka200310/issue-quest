@@ -195,12 +195,12 @@ const UpdateIssue = () => {
         id="priority"
         className="w-full text-lg bg-transparent border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-300"
       >
-        <option value="" disabled>
+        <option value="" className="dark:text-slate-500" disabled>
           Select a priority
         </option>
-        <option value="high">High</option>
-        <option value="medium">Medium</option>
-        <option value="low">Low</option>
+        <option value="high" className="dark:text-black">High</option>
+        <option value="medium" className="dark:text-black">Medium</option>
+        <option value="low" className="dark:text-black">Low</option>
       </select>
 
       <input
@@ -219,12 +219,12 @@ const UpdateIssue = () => {
         id="status"
         className="w-full text-lg bg-transparent border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-300"
       >
-        <option value="" disabled>
+        <option value="" className="dark:text-slate-500" disabled>
           Select status
         </option>
-        <option value="open">Open</option>
-        <option value="in progress">In Progress</option>
-        <option value="closed">Closed</option>
+        <option value="open" className="dark:text-black">Open</option>
+        <option value="in progress" className="dark:text-black">In Progress</option>
+        <option value="closed" className="dark:text-black">Closed</option>
       </select>
 
       <input
