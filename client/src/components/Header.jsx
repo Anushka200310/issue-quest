@@ -27,18 +27,6 @@ const Header = () => {
         </Link>
       </div>
       <div className="flex items-center gap-3 sm:gap-16">
-        {/* search bar */}
-        <form className="flex items-center gap-1 text-3xl cursor-pointer">
-          {isLoggedIn && pathname === "/issue-list" ? (
-            <>
-              {" "}
-              <Input
-                className="dark:border-slate-400 mr-3 bg-transparent focus-visible:ring-0"
-                placeholder="search..."
-              />
-            </>
-          ) : null}
-        </form>
 
         {/* desktop menu */}
         {isLoggedIn ? (
