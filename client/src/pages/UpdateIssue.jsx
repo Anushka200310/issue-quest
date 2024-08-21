@@ -223,7 +223,7 @@ const UpdateIssue = () => {
           Select status
         </option>
         <option value="open" className="text-black">Open</option>
-        <option value="in progress" className="text-black">In Progress</option>
+        <option value="ongoing" className="text-black">Ongoing</option>
         <option value="closed" className="text-black">Closed</option>
       </select>
 

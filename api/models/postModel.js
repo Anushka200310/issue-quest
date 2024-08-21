@@ -21,7 +21,7 @@ const postSchema = new Schema({
     status: {
         type: String,
         required: true,
-        enum: ["open", "in progress", "closed"],
+        enum: ["open", "ongoing", "closed"],
     },
     githubRepoLink: {
         type: String,

@@ -13,6 +13,7 @@ import Profile from './pages/Profile.jsx'
 import UpdateIssue from './pages/UpdateIssue.jsx'
 import Issue from './pages/Issue.jsx'
 import CreateIssue from './pages/CreateIssue.jsx'
+import Analytics from './pages/Analytics.jsx'
 
 
 
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/login' element={<LogIn />} />
         <Route path='/logout' element={<Logout />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/analytics' element={<Analytics />} />
         <Route path='/create' element={<CreateIssue />} />
         <Route path='/update-issue/:id' element={<UpdateIssue />} />
         <Route path='/issue/:id' element={<Issue />} />

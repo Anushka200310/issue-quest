@@ -189,6 +189,7 @@
     import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage';
     import { app } from '@/firebase';
     import toast, { Toaster } from 'react-hot-toast';
+import { LogOut } from 'lucide-react';
     
     const Profile = () => {
       const { isLoggedIn, user, API, AuthToken } = useAuth();
@@ -310,6 +311,7 @@
                   </PopoverContent>
                 </Popover>
               </form>
+             <Link to="/logout" className='my-4 flex items-center gap-1 dark:text-slate-500'><LogOut className='w-4' />Logout</Link>
             </div>
           </div>
           <Toaster />

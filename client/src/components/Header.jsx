@@ -9,11 +9,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CiMenuFries } from "react-icons/ci";
-import { Input } from "@/components/ui/input";
 import { Link, useLocation } from "react-router-dom";
 import useAuth from "@/store/auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Bug, CircleDot, Home, LogOut, User } from "lucide-react";
+import { BarChart2Icon, Bug, CircleDot, Home, LogOut, User } from "lucide-react";
 
 const Header = () => {
   const { isLoggedIn, user } = useAuth();
@@ -55,11 +54,13 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="/logout"
-                className="flex items-center gap-2 text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white"
+                to="/analytics"
+                className={`flex items-center gap-2 text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white ${
+                  pathname === "/analytics" && "font-bold"
+                }`}
               >
-                <LogOut />
-                Log out
+                <BarChart2Icon />
+                Analytics
               </Link>
             </li>
           </ul>
@@ -94,6 +95,9 @@ const Header = () => {
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Link to="/issue-list">Issues</Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link to="/analytics">Analytics</Link>
             </DropdownMenuItem>
             {isLoggedIn ? (
               <DropdownMenuItem>

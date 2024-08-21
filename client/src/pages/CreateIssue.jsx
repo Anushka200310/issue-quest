@@ -214,7 +214,7 @@ const CreateIssue = () => {
             Select status
           </option>
           <option value="open" className="dark:text-black">Open</option>
-          <option value="in progress" className="dark:text-black">In Progress</option>
+          <option value="ongoing" className="dark:text-black">Ongoing</option>
           <option value="closed" className="dark:text-black">Closed</option>
         </select>
         <input
