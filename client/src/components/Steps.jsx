@@ -31,7 +31,7 @@ const Steps = () => {
         <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-8">How It Works</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <div key={index} className="flex flex-col items-center py-4 px-2 hover:shadow-lg">
               {step.icon}
               <h3 className="mt-4 text-xl font-semibold text-gray-800 dark:text-gray-200">
                 {step.title}
