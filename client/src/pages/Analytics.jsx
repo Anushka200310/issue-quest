@@ -37,7 +37,11 @@ const Analytics = () => {
   }, [API, AuthToken, user._id]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <h2 className="text-gray-600 dark:text-gray-400 flex items-center justify-center h-screen text-xl font-semibold">
+        Loading...
+      </h2>
+    );
   }
 
   // Count the issues by status

@@ -14,7 +14,7 @@ const Cta = () => {
         <div className="flex justify-center">
           <Link
             to={isLoggedIn ? "/create" : "/signup"}
-            className="px-8 py-3 text-lg font-semibold bg-white text-blue-600 rounded-full shadow-lg hover:bg-gray-100 transition-transform transform hover:scale-105"
+            className="px-8 py-3 text-lg font-semibold bg-slate-300 text-blue-800 rounded-full shadow-lg hover:bg-gray-100 transition-transform transform hover:scale-105"
           >
             Get Started for Free
           </Link>

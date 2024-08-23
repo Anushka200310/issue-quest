@@ -1,34 +1,41 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import useAuth from "@/store/auth";
 
 const Hero = () => {
-    const { isLoggedIn } = useAuth();
+  const { isLoggedIn } = useAuth();
   return (
-    <section className="relative bg-gray-50 dark:bg-gray-900 overflow-hidden h-auto">
-        <div className="container flex flex-col items-center px-5 py-16 mx-auto text-center lg:py-24 md:px-10 lg:px-32 dark:text-gray-50">
-          <h1 className="text-4xl font-extrabold leading-tight sm:text-6xl xl:max-w-4xl text-gray-800 dark:text-gray-200">
-            Streamline Your GitHub Issue Management with{" "}
-            <span className="text-blue-600 dark:text-slate-400">
-              Issue Quest
-            </span>
-          </h1>
-          <p className="mt-6 mb-8 text-lg sm:text-xl xl:max-w-3xl text-gray-600 dark:text-gray-400">
-            Keep all your project issues in one place, making it easier to track
-            and manage them.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              to={isLoggedIn ? "/create" : "/signup"}
-              className="px-8 md:px-10 py-1 md:py-3 text-lg font-semibold rounded-3xl transition-transform transform hover:scale-105 bg-transparent hover:bg-blue-500 hover:text-white dark:bg-transparent dark:text-white dark:hover:bg-slate-700 dark:hover:border-none text-gray-900 border border-blue-500 hover:shadow-lg"
-            >
-              {isLoggedIn ? "Create" : "Join"}
+    <main className="container px-6 py-12 md:py-0 mx-auto">
+      <div className="items-center lg:flex">
+        <div className="w-full lg:w-1/2">
+          <div className="lg:max-w-lg">
+            <h1 className="text-3xl font-semibold text-gray-800 dark:text-white lg:text-4xl">
+              Streamline Your GitHub Issue Management
+              <br /> with <span className="text-blue-500 ">Issue Quest</span>
+            </h1>
+            <p className="mt-3 text-gray-600 dark:text-gray-400">
+              Keep all your project issues in one place, making it easier to
+              track and manage them.
+            </p>
+
+            <Link to={isLoggedIn ? "/create" : "/signup"}>
+              <button className="w-full px-5 py-2 mt-6 text-sm tracking-wider text-white uppercase transition-colors duration-300 transform bg-blue-600 rounded-lg lg:w-auto hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                {isLoggedIn ? "Create" : "Join"}
+              </button>
             </Link>
           </div>
-          <img src="/ControlPanel.svg" className="w-[75%] md:w-[50%]" />
         </div>
-      </section>
-  )
-}
+
+        <div className="flex items-center justify-center w-full mt-6 lg:mt-0 lg:w-1/2">
+          <img
+            className="w-full h-full lg:max-w-2xl"
+            src="/ControlPanel.svg"
+            alt="Control-panel.svg"
+          />
+        </div>
+      </div>
+    </main>
+  );
+};
 
 export default Hero;

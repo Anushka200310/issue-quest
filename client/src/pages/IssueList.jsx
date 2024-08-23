@@ -254,7 +254,7 @@ const IssueList = () => {
                   />
                 </Link>
                 <Link
-                  className="flex-1 text-gray-800 dark:text-gray-200 font-semibold hover:underline"
+                  className="flex-1 text-gray-800 dark:text-gray-200 font-semibold"
                   to={`/issue/${issue._id}`}
                 >
                   <p>{issue.title}</p>
