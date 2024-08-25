@@ -1,6 +1,7 @@
 import useAuth from "@/store/auth";
 import { Edit, Loader2Icon } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { FaGithub } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 
 const Issue = () => {
@@ -93,7 +94,7 @@ const Issue = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src="/github.svg" alt="github icon" className="w-10" />
+                    <FaGithub className="w-8 h-8" />
                 </a>
               )}
             </div>

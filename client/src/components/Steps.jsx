@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUserPlus, FaPencilAlt, FaCheckSquare, FaChartLine } from 'react-icons/fa';
+import exploreImage from '../assets/explore-img.png';
 
 const Steps = () => {
   const steps = [
@@ -26,21 +27,45 @@ const Steps = () => {
   ];
 
   return (
-    <section className="py-12 bg-white dark:bg-gray-800">
-      <div className="container mx-auto px-6 lg:px-8 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-8">How It Works</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {steps.map((step, index) => (
-            <div key={index} className="flex flex-col items-center py-4 px-2 hover:shadow-lg">
-              {step.icon}
-              <h3 className="mt-4 text-xl font-semibold text-gray-800 dark:text-gray-200">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-400">
-                {step.description}
-              </p>
+    <section className="bg-white dark:bg-gray-900">
+      <div className="container px-6 py-10 mx-auto">
+        <div className="lg:flex lg:items-center">
+          <div className="w-full space-y-12 lg:w-1/2">
+            <div>
+              <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-white">
+                Explore <br />Issue Quest
+              </h1>
+              <div className="mt-2">
+                <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
+                <span className="inline-block w-3 h-1 ml-1 bg-blue-500 rounded-full"></span>
+                <span className="inline-block w-1 h-1 ml-1 bg-blue-500 rounded-full"></span>
+              </div>
             </div>
-          ))}
+
+            {steps.map((step, index) => (
+              <div key={index} className="md:flex md:items-start md:-mx-4">
+                <span className="inline-block p-2 rounded-xl md:mx-4">
+                  {step.icon}
+                </span>
+                <div className="mt-4 md:mx-4 md:mt-0">
+                  <h1 className="text-xl font-semibold text-gray-700 capitalize dark:text-white">
+                    {step.title}
+                  </h1>
+                  <p className="mt-3 text-gray-500 dark:text-gray-300">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="hidden lg:flex lg:items-center lg:w-1/2 lg:justify-center">
+            <img
+              className="w-[28rem] h-[28rem] object-cover xl:w-[34rem] xl:h-[34rem] rounded-full"
+              src={exploreImage}
+              alt="Illustration"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -48,4 +73,5 @@ const Steps = () => {
 };
 
 export default Steps;
+
 
