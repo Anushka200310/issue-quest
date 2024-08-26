@@ -60,6 +60,7 @@ const Issue = () => {
         {issue && !loading && !error && (
           <div>
             <div className="relative group">
+              {/* cover image */}
               <img
                 src={issue.imageUrls[0]}
                 className="w-full h-96 object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105"
@@ -98,6 +99,21 @@ const Issue = () => {
                 </a>
               )}
             </div>
+
+              {/* Additional Images */}
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {issue.imageUrls.slice(1).map((url, index) => (
+                <img
+                  key={index}
+                  src={url}
+                  className="w-full h-48 object-cover rounded-lg shadow-lg"
+                  alt={`Issue related image ${index + 2}`}
+                />
+              ))}
+            </div>
+
+
+
           </div>
         )}
       </div>
