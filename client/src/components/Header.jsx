@@ -13,7 +13,7 @@ const Header = () => {
     <nav className="relative bg-white shadow dark:bg-gray-800">
       <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
         <div className="flex items-center justify-between">
-          <Link to="/" className="font-bold text-xl md:text-2xl flex items-center gap-2">
+          <Link to="/" className="font-bold text-blue-950 dark:text-slate-300 text-xl md:text-2xl flex items-center gap-2">
             Issue Quest <CircleDot className="hidden md:block" />
           </Link>
 
