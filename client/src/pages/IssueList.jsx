@@ -138,7 +138,7 @@ const IssueList = () => {
                   to={`/issue/${issue._id}`}
                 >
                   <p className="text-slate-800 dark:text-slate-400 text-xl">{issue.title}</p>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  <p className="text-slate-500 dark:text-slate-500 text-sm">
                     {issue.updatedAt && issue.updatedAt !== issue.createdAt
                       ? `Updated at ${formatDate(issue.updatedAt)}`
                       : `Created at ${formatDate(issue.createdAt)}`}

@@ -44,7 +44,6 @@ const Analytics = () => {
     );
   }
 
-  // Count the issues by status
   const statusCount = issues.reduce(
     (acc, issue) => {
       acc[issue.status] = (acc[issue.status] || 0) + 1;
@@ -77,12 +76,14 @@ const Analytics = () => {
   };
 
   return (
-    <div className="container mx-auto my-12 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-6">
+    <div className="container mx-auto my-6 p-4 sm:p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 dark:text-gray-200 mb-4 sm:mb-6 text-center sm:text-left">
         Analyze Progress
       </h2>
-      <div className="flex justify-center">
-        <Bar data={data} options={options} />
+      <div className="w-full overflow-x-auto">
+        <div className="w-[300px] sm:w-full flex justify-center">
+          <Bar data={data} options={options} />
+        </div>
       </div>
     </div>
   );
