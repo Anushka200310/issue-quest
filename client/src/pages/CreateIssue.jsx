@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import { useState } from "react";
 import useAuth from "@/store/auth";
 import { Navigate } from "react-router-dom";
 import {
@@ -29,24 +28,24 @@ const CreateIssue = () => {
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
+  const { API, AuthToken, user } = useAuth();
+  const URL = `${API}/api/post/create`;
+
   console.log(formData);
 
   if (!isLoggedIn) {
     return <Navigate to="/signup" />;
   }
 
-  const { API, AuthToken, user } = useAuth();
-
-  const URL = `${API}/api/post/create`;
-  const navigate = useNavigate();
-
-   // Function to validate GitHub repo URL
-   const isValidGitHubRepoLink = (url) => {
-    const githubRepoRegex = /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
+  // Function to validate GitHub repo URL
+  const isValidGitHubRepoLink = (url) => {
+    const githubRepoRegex =
+      /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/;
     return githubRepoRegex.test(url);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
       setImageUploadError(false);
@@ -65,6 +64,7 @@ const CreateIssue = () => {
           setUploading(false);
         })
         .catch((err) => {
+          console.log(err);
           setImageUploadError("Image upload failed (2mb max per image)");
           setUploading(false);
         });
@@ -122,7 +122,7 @@ const CreateIssue = () => {
     try {
       if (!isValidGitHubRepoLink(formData.githubRepoLink)) {
         toast.error("Please enter a valid GitHub repository URL.");
-        return; 
+        return;
       }
 
       if (formData.imageUrls.length < 1) {
@@ -189,9 +189,15 @@ const CreateIssue = () => {
           <option value="" className="dark:text-slate-500" disabled>
             Select a priority
           </option>
-          <option value="high" className="dark:text-black">High</option>
-          <option value="medium" className="dark:text-black">Medium</option>
-          <option value="low" className="dark:text-black">Low</option>
+          <option value="high" className="dark:text-black">
+            High
+          </option>
+          <option value="medium" className="dark:text-black">
+            Medium
+          </option>
+          <option value="low" className="dark:text-black">
+            Low
+          </option>
         </select>
 
         <input
@@ -213,9 +219,15 @@ const CreateIssue = () => {
           <option value="" className="dark:text-slate-500" disabled>
             Select status
           </option>
-          <option value="open" className="dark:text-black">Open</option>
-          <option value="ongoing" className="dark:text-black">Ongoing</option>
-          <option value="closed" className="dark:text-black">Closed</option>
+          <option value="open" className="dark:text-black">
+            Open
+          </option>
+          <option value="ongoing" className="dark:text-black">
+            Ongoing
+          </option>
+          <option value="closed" className="dark:text-black">
+            Closed
+          </option>
         </select>
         <input
           onChange={handleChange}
@@ -224,7 +236,7 @@ const CreateIssue = () => {
           id="githubRepoLink"
           placeholder="GitHub Repository Link"
           required
-           className="w-full text-lg bg-transparent border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-300"
+          className="w-full text-lg bg-transparent border-b-2 border-gray-300 focus:outline-none focus:border-blue-500 transition duration-300"
         />
         <div className="flex flex-col flex-1 mt-6">
           <p className="font-semibold text-lg mb-3 text-gray-600 dark:text-gray-400">

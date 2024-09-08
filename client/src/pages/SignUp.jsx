@@ -1,19 +1,18 @@
-
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import useAuth from '@/store/auth.jsx';
-import OAuth from '@/components/OAuth';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "@/store/auth.jsx";
+import OAuth from "@/components/OAuth";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   });
 
   const [loading, setLoading] = useState(false);
 
-  const { storeTokenInLS, API, user } = useAuth();
+  const { storeTokenInLS, API } = useAuth();
   const URL = `${API}/api/auth/signup`;
   const navigate = useNavigate();
 
@@ -29,9 +28,9 @@ const SignUp = () => {
     setLoading(true);
     try {
       const res = await fetch(URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
@@ -41,13 +40,13 @@ const SignUp = () => {
         storeTokenInLS(data.token);
         setLoading(false);
         setFormData({
-          name: '',
-          email: '',
-          password: '',
+          name: "",
+          email: "",
+          password: "",
         });
-        navigate('/');
+        navigate("/");
       } else {
-        throw new Error('Network response was not ok');
+        throw new Error("Network response was not ok");
       }
     } catch (error) {
       console.log(error);
@@ -126,13 +125,13 @@ const SignUp = () => {
                   disabled={loading}
                   className="w-full flex justify-center items-center rounded-md bg-indigo-600 dark:bg-indigo-500 py-2 px-4 text-sm font-semibold text-white hover:bg-indigo-700 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 shadow-md"
                 >
-                  {loading ? 'Loading...' : 'Sign up'}
+                  {loading ? "Loading..." : "Sign up"}
                 </button>
                 <OAuth />
               </div>
             </form>
             <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <Link
                 to="/login"
                 className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"

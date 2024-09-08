@@ -1,17 +1,31 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import Chart from "chart.js/auto";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 import useAuth from "@/store/auth";
 import { Navigate } from "react-router-dom";
+
+// Register necessary components for the Bar chart
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Analytics = () => {
   const { isLoggedIn, API, AuthToken, user } = useAuth();
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  if (!isLoggedIn) {
-    return <Navigate to="/signup" />;
-  }
 
   useEffect(() => {
     const fetchIssues = async () => {
@@ -36,6 +50,10 @@ const Analytics = () => {
     fetchIssues();
   }, [API, AuthToken, user._id]);
 
+  if (!isLoggedIn) {
+    return <Navigate to="/signup" />;
+  }
+
   if (loading) {
     return (
       <h2 className="text-gray-600 dark:text-gray-400 flex items-center justify-center h-screen text-xl font-semibold">
@@ -52,7 +70,6 @@ const Analytics = () => {
     { open: 0, ongoing: 0, closed: 0 }
   );
 
-  // Data for the Bar chart
   const data = {
     labels: ["Open", "Ongoing", "Closed"],
     datasets: [

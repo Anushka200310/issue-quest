@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "@/store/auth";
 import { Edit, Trash } from "lucide-react";
 import { Link, Navigate } from "react-router-dom";
@@ -13,10 +12,6 @@ const IssueList = () => {
   const [filteredIssues, setFilteredIssues] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-
-  if (!isLoggedIn) {
-    return <Navigate to="/signup" />;
-  }
 
   useEffect(() => {
     const handleShowIssue = async () => {
@@ -54,6 +49,10 @@ const IssueList = () => {
 
     handleShowIssue();
   }, [API, AuthToken, user._id]);
+
+  if (!isLoggedIn) {
+    return <Navigate to="/signup" />;
+  }
 
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();
@@ -137,7 +136,9 @@ const IssueList = () => {
                   className="flex-1 font-semibold py-2"
                   to={`/issue/${issue._id}`}
                 >
-                  <p className="text-slate-800 dark:text-slate-400 text-xl">{issue.title}</p>
+                  <p className="text-slate-800 dark:text-slate-400 text-xl">
+                    {issue.title}
+                  </p>
                   <p className="text-slate-500 dark:text-slate-500 text-sm">
                     {issue.updatedAt && issue.updatedAt !== issue.createdAt
                       ? `Updated at ${formatDate(issue.updatedAt)}`

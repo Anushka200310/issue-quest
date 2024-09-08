@@ -1,6 +1,6 @@
 import useAuth from "@/store/auth";
 import { Edit, Loader2Icon } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { Link, useParams } from "react-router-dom";
 
@@ -95,13 +95,13 @@ const Issue = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                    <FaGithub className="w-8 h-8" />
+                  <FaGithub className="w-8 h-8" />
                 </a>
               )}
             </div>
 
-              {/* Additional Images */}
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/* Additional Images */}
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {issue.imageUrls.slice(1).map((url, index) => (
                 <img
                   key={index}
@@ -111,9 +111,6 @@ const Issue = () => {
                 />
               ))}
             </div>
-
-
-
           </div>
         )}
       </div>

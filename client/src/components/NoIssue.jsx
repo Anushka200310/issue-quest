@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "./ui/button";
 import { CircleDot, PlusIcon } from "lucide-react";
 import { Link } from "react-router-dom";

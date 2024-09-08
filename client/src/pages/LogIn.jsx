@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useAuth from "@/store/auth.jsx";
@@ -13,7 +12,7 @@ const LogIn = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const { storeTokenInLS, API, user } = useAuth();
+  const { storeTokenInLS, API } = useAuth();
   const URL = `${API}/api/auth/login`;
   const navigate = useNavigate();
 
@@ -114,7 +113,7 @@ const LogIn = () => {
           <OAuth />
         </form>
         <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
-          Don't have an account?{" "}
+          Don&apos;t have an account?{" "}
           <Link
             to="/signup"
             className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"

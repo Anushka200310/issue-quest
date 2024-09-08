@@ -1,28 +1,48 @@
-import React from 'react';
-import { FaUserPlus, FaPencilAlt, FaCheckSquare, FaChartLine } from 'react-icons/fa';
-import exploreImage from '../assets/explore-img.png';
+import {
+  FaUserPlus,
+  FaPencilAlt,
+  FaCheckSquare,
+  FaChartLine,
+} from "react-icons/fa";
+import exploreImage from "../assets/explore-img.png";
 
 const Steps = () => {
   const steps = [
     {
-      icon: <FaUserPlus size={40} className="text-blue-500 dark:text-blue-400" />,
-      title: 'Sign Up',
-      description: 'Create an account in just a few easy steps to get started.',
+      icon: (
+        <FaUserPlus size={40} className="text-blue-500 dark:text-blue-400" />
+      ),
+      title: "Sign Up",
+      description: "Create an account in just a few easy steps to get started.",
     },
     {
-      icon: <FaPencilAlt size={40} className="text-green-500 dark:text-green-400" />,
-      title: 'Create Issues',
-      description: 'Start by creating issues for your project with detailed descriptions.',
+      icon: (
+        <FaPencilAlt size={40} className="text-green-500 dark:text-green-400" />
+      ),
+      title: "Create Issues",
+      description:
+        "Start by creating issues for your project with detailed descriptions.",
     },
     {
-      icon: <FaCheckSquare size={40} className="text-yellow-500 dark:text-yellow-400" />,
-      title: 'Manage & Track',
-      description: 'Keep track of your issues, prioritize them, and manage their statuses.',
+      icon: (
+        <FaCheckSquare
+          size={40}
+          className="text-yellow-500 dark:text-yellow-400"
+        />
+      ),
+      title: "Manage & Track",
+      description:
+        "Keep track of your issues, prioritize them, and manage their statuses.",
     },
     {
-      icon: <FaChartLine size={40} className="text-purple-500 dark:text-purple-400" />,
-      title: 'Analyze Progress',
-      description: 'Review analytics to see how your project is progressing and make informed decisions.',
+      icon: (
+        <FaChartLine
+          size={40}
+          className="text-purple-500 dark:text-purple-400"
+        />
+      ),
+      title: "Analyze Progress",
+      description: "Review analytics to see how your project is progressing.",
     },
   ];
 
@@ -32,8 +52,9 @@ const Steps = () => {
         <div className="lg:flex lg:items-center">
           <div className="w-full space-y-12 lg:w-1/2">
             <div>
-              <h1 className="text-2xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-slate-300">
-                Explore <br />Issue Quest
+              <h1 className="text-3xl font-semibold text-gray-800 capitalize lg:text-3xl dark:text-slate-300">
+                Explore <br />
+                Issue Quest
               </h1>
               <div className="mt-2">
                 <span className="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
@@ -73,5 +94,3 @@ const Steps = () => {
 };
 
 export default Steps;
-
-
