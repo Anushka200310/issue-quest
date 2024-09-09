@@ -2,7 +2,7 @@
 
 ## 🚀 Overview
 
-Welcome to **Issue Quest** – the ultimate tool for streamlining your GitHub issue management! Our platform simplifies how you track, manage, and analyze issues, making your project management a breeze. Whether you're working on a personal project or collaborating with a team, Issue Quest provides a seamless experience to keep your workflow smooth and efficient.
+Welcome to **Issue Quest** – an application for streamlining your GitHub issue management! Our platform simplifies how you track, manage, and analyze issues, making your project management a breeze.Issue Quest provides a seamless experience to keep your workflow smooth and efficient.
 
 ## ✨ Key Features
 
