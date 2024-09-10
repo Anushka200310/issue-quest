@@ -14,6 +14,8 @@ import UpdateIssue from './pages/UpdateIssue.jsx'
 import Issue from './pages/Issue.jsx'
 import CreateIssue from './pages/CreateIssue.jsx'
 import Analytics from './pages/Analytics.jsx'
+import Termsofuse from './pages/Termsofuse.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 
 
 
@@ -33,6 +35,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/create' element={<CreateIssue />} />
         <Route path='/update-issue/:id' element={<UpdateIssue />} />
         <Route path='/issue/:id' element={<Issue />} />
+        <Route path='/terms-and-conditions' element={<Termsofuse />} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
       </Route>
     </Routes>
     </BrowserRouter>

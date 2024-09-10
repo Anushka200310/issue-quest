@@ -14,30 +14,30 @@ const Footer = () => {
           </Link>
           <ul className="flex space-x-4">
             <li>
-              <a href="#" className="hover:underline">
+              <Link to="/terms-and-conditions" className="hover:underline">
                 Terms of Use
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <Link to="/privacy-policy" className="hover:underline">
                 Privacy
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
         <ul className="flex space-x-4">
           <li>
-            <a href="#" className="hover:underline">
+            <a href="https://github.com/Anushka200310/issue-quest" rel="noreferrer" target="_blank" className="hover:underline">
               Github
             </a>
           </li>
           <li>
-            <a href="#" className="hover:underline">
+            <a href="https://www.linkedin.com/in/anushka-banerjee-73bb52253/" rel="noreferrer" target="_blank" className="hover:underline">
               LinkedIn
             </a>
           </li>
           <li>
-            <a href="#" className="hover:underline">
+            <a href="https://x.com/Anu__says" rel="noreferrer" target="_blank"  className="hover:underline">
               Twitter
             </a>
           </li>
