@@ -5,9 +5,11 @@ import errorMiddleware from './middleware/errorMiddleware.js';
 import cors  from "cors";
 import userRouter from './routes/userRouter.js';
 import postRouter from './routes/postRouter.js';
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-let PORT = 3000;
+let PORT = process.env.PORT || 3000;
 
 const corsOptions = {
     origin : "http://localhost:5173",
