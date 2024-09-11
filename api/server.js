@@ -12,7 +12,7 @@ const app = express();
 let PORT = process.env.PORT || 3000;
 
 const corsOptions = {
-    origin : "http://localhost:5173",
+    origin : "https://issue-quest-app.onrender.com",
     methods : "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials : true,
     allowedHeaders: ["Content-Type", "Authorization"],
